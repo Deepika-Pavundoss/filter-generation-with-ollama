@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ollama
+
+ollama:
+  base-url: http://localhost:11434/api/generate
+  model: llama3:8b
+
+server:
+  compression:
+    enabled: false
