@@ -1,0 +1,38 @@
+<div class="ai-container" [class.lifted]="isFocused">
+
+    <!-- Header -->
+    <div class="ai-title">
+        <span class="dot"></span>
+        Ask AI
+    </div>
+
+    <!-- Search box -->
+    <div class="ai-search-box" [class.active]="prompt.length > 0" [class.streaming]="streaming"
+        (focusin)="isFocused = true" (focusout)="isFocused = false">
+        <i class="pi pi-sparkles ai-icon" [class.thinking]="streaming"></i>
+
+        <input pInputText type="text" placeholder="Ask anything…" [(ngModel)]="prompt" (keydown.enter)="start()"
+            [disabled]="streaming" />
+
+        <button pButton icon="pi pi-arrow-up" class="send-btn" [class.ready]="prompt.length > 0 && !streaming"
+            [class.streaming]="streaming" [disabled]="!prompt || streaming" (click)="start()"></button>
+    </div>
+
+    <!-- Thinking -->
+    @if (streaming) {
+    <div class="ai-thinking">
+        <span>Thinking…</span>
+    </div>
+    }
+
+    <!-- Response -->
+    @if (response) {
+    <div class="ai-response fade-in">
+        <pre>{{ response }}<span class="cursor">▍</span></pre>
+    </div>
+    }
+
+</div>
+<div class="table-wrapper" *ngIf="showTable">
+  <app-device-table></app-device-table>
+</div>

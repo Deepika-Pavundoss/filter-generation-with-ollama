@@ -1,0 +1,241 @@
+/* Card */
+.ai-container {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 20px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #7f7cff, #4adede);
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s ease;
+}
+
+/* ✨ Lift on focus */
+.ai-container.lifted {
+    transform: translateY(-10px) scale(1.015);
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35),
+        0 0 32px rgba(127, 124, 255, 0.55);
+}
+
+/* Title */
+.ai-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    opacity: 0.9;
+}
+
+.ai-title .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4adede;
+    box-shadow: 0 0 10px #4adede;
+}
+
+/* Search box */
+.ai-search-box {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.ai-search-box.active {
+    border-color: #7f7cff;
+    box-shadow: 0 0 18px rgba(127, 124, 255, 0.6);
+}
+
+.ai-search-box.streaming {
+    animation: pulse 1.4s ease-in-out infinite;
+}
+
+/* Icon */
+.ai-icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: #7f7cff;
+    transition: transform 0.3s ease;
+}
+
+.ai-icon.thinking {
+    animation: sparkle 1.2s linear infinite;
+    color: #4adede;
+}
+
+/* Input */
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Send button */
+.send-btn {
+    background: linear-gradient(135deg, #7f7cff, #4adede);
+    border: none;
+    border-radius: 10px;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.send-btn.ready {
+    box-shadow: 0 0 14px rgba(74, 222, 222, 0.8);
+}
+
+.send-btn.ready:hover {
+    transform: translateY(-1px) scale(1.05);
+}
+
+.send-btn.streaming {
+    opacity: 0.6;
+    transform: scale(0.95);
+}
+
+/* Thinking */
+.ai-thinking {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    opacity: 0.85;
+}
+
+.ai-thinking span {
+    animation: dots 1.5s infinite;
+}
+
+/* Response */
+.ai-response {
+    margin-top: 24px;
+    padding: 18px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Cursor */
+.cursor {
+    margin-left: 2px;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+/* Animations */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 12px rgba(127, 124, 255, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 26px rgba(127, 124, 255, 0.8);
+    }
+
+    100% {
+        box-shadow: 0 0 12px rgba(127, 124, 255, 0.4);
+    }
+}
+
+@keyframes sparkle {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+
+    50% {
+        transform: rotate(15deg) scale(1.15);
+    }
+
+    100% {
+        transform: rotate(0) scale(1);
+    }
+}
+
+@keyframes dots {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+.fade-in {
+    animation: responseIn 0.4s ease-out;
+}
+
+@keyframes responseIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    .ai-container,
+    .ai-search-box,
+    .send-btn {
+        transition: none;
+        animation: none;
+    }
+}
+
+.table-wrapper {
+  margin-top: 1.5rem;
+  animation: fadeUp 0.4s ease-out;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

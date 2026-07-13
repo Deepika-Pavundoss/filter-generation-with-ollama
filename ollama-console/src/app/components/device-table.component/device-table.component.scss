@@ -1,0 +1,42 @@
+.table-container {
+    padding: 1rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 12px;
+    background: #0f172a;
+    color: white;
+
+    input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: white;
+        outline: none;
+    }
+
+    i {
+        opacity: 0.7;
+    }
+}
+
+.status {
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+
+    &.active {
+        background: #16a34a;
+        color: white;
+    }
+
+    &.inactive {
+        background: #dc2626;
+        color: white;
+    }
+}
